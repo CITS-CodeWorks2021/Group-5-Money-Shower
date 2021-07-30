@@ -22,6 +22,10 @@ public class MoneyInterest : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if(money.Value < 0)
+        {
+            money.Value = 0;
+        }
         displayMon = money.Value;
         timer -= Time.deltaTime;
         if(timer <= 0)
@@ -30,6 +34,10 @@ public class MoneyInterest : MonoBehaviour
             money.Value *= calcInterest;
             Debug.Log(money);
             timer = showTimer;
+        }
+        if(money.Value < 0)
+        {
+            money.Value = 0;
         }
     }
 }

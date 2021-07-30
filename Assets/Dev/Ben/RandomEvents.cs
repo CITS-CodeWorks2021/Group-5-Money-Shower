@@ -8,6 +8,7 @@ public class RandomEvents : MonoBehaviour
     public sharedNumber money;
     public float timer = 5;
     int eventSelector;
+    public float displayMon;
     void Start()
     {
         
@@ -19,8 +20,9 @@ public class RandomEvents : MonoBehaviour
         timer -= Time.deltaTime;
         if(timer <= 0)
         {
+            displayMon = money.Value;
             Debug.Log(timer + "... Start cycle");
-            eventSelector = Random.Range(1, 5);
+            eventSelector = Random.Range(1, 6);
             if(eventSelector == 1)
             {
                 money.Value -= 500;
@@ -37,10 +39,14 @@ public class RandomEvents : MonoBehaviour
             {
                 money.Value += 500;
                 Debug.Log(money + "... 4");
+            }else if(eventSelector == 5)
+            {
+                money.Value += 1000;
+                Debug.Log(money + "... 5");
             }
             timer = 5;
             Debug.Log(timer + "... end cycle");
         }
-       
+        displayMon = money.Value;
     }
 }
