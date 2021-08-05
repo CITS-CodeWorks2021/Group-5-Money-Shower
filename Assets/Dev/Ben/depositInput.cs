@@ -29,8 +29,15 @@ public class depositInput : MonoBehaviour
     {
         if(float.TryParse(amount, out deposit))
         {
-            money.Value += deposit;
-            mainMoney.Value -= deposit;
+            if (deposit <= mainMoney.Value)
+            {
+                money.Value += deposit;
+                mainMoney.Value -= deposit;
+            }else if(deposit > mainMoney.Value)
+            {
+                money.Value += mainMoney.Value;
+                mainMoney.Value = 0;
+            }
             GetComponent<InputField>().text = "";
         }
         else

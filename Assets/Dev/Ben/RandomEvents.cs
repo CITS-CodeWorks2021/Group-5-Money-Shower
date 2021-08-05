@@ -65,6 +65,10 @@ public class RandomEvents : MonoBehaviour
                 gainLose = 1;
                 Debug.Log(mainMoney + "... 6");
             }
+            if(mainMoney.Value < 0)
+            {
+                mainMoney.Value = 0;
+            }
             if (gainLose == 1)
             {
                 EOS.GetComponent<Text>().text = "Congratulations, you got an extra " + deltaMoney.ToString("c") + "! Spend it well!";

@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class withdraw : MonoBehaviour
+public class payLoan : MonoBehaviour
 {
     // Start is called before the first frame update
     public float deposit;
     public sharedNumber mainMoney;
     public sharedNumber money;
+    public sharedNumber loanAmount;
     // Start is called before the first frame update
     void Start()
     {
@@ -30,14 +31,14 @@ public class withdraw : MonoBehaviour
     {
         if (float.TryParse(amount, out deposit))
         {
-            if (deposit <= money.Value)
+            if (deposit < loanAmount.Value)
             {
-                mainMoney.Value += deposit;
-                money.Value -= deposit;
-            }else if(deposit > money.Value)
+                mainMoney.Value -= deposit;
+                loanAmount.Value -= deposit;
+            }else if(deposit >= loanAmount.Value)
             {
-                mainMoney.Value += money.Value;
-                money.Value = 0;
+                mainMoney.Value -= loanAmount.Value;
+                loanAmount.Value = 0;
             }
             GetComponent<InputField>().text = "";
         }
