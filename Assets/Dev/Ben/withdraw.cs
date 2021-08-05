@@ -1,10 +1,11 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class input : MonoBehaviour
+
+public class withdraw : MonoBehaviour
 {
+    // Start is called before the first frame update
     public float deposit;
     public sharedNumber mainMoney;
     public sharedNumber money;
@@ -22,15 +23,15 @@ public class input : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     public void depositAmount(string amount)
     {
-        if(float.TryParse(amount, out deposit))
+        if (float.TryParse(amount, out deposit))
         {
-            money.Value += deposit;
-            mainMoney.Value -= deposit;
+            mainMoney.Value += deposit;
+            money.Value -= deposit;
             GetComponent<InputField>().text = "";
         }
         else
